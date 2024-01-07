@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -43,6 +45,8 @@ class HomeFragment : Fragment() {
         // setup searchView
         setupSearchView()
 
+
+
         userAdapter.setOnItemClickListener {
             val bundle = Bundle()
             bundle.putString("username", it.login)
@@ -66,6 +70,20 @@ class HomeFragment : Fragment() {
                 is Resource.Loading -> {
                 }
                 else -> {}
+            }
+        })
+
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if(_handleOnBackPressed()){
+                    // in here you can do logic when backPress is clicked
+                    Log.d("TEST","Not back")
+                    binding.searchView.setQuery("", true)
+                }else{
+                    Log.d("TEST","back")
+                    isEnabled = false
+                    activity?.onBackPressed()
+                }
             }
         })
 
@@ -98,6 +116,13 @@ class HomeFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun _handleOnBackPressed(): Boolean {
+        if (binding.searchView.query.toString().isNotBlank()) {
+            return true
+        }
+        return false
     }
 
 }
