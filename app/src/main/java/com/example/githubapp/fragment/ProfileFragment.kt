@@ -47,14 +47,13 @@ class ProfileFragment : Fragment() {
         binding.tvFollowers.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("username", username)
-            bundle.putString("tag", "Followers")
-            findNavController().navigate(R.id.action_profileFragment_to_usersFragment, bundle)
+            findNavController().navigate(R.id.action_profileFragment_to_followersFragment, bundle)
         }
         binding.tvFollowing.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("username", username)
             bundle.putString("tag", "Following")
-            findNavController().navigate(R.id.action_profileFragment_to_usersFragment, bundle)
+            findNavController().navigate(R.id.action_profileFragment_to_followingFragment, bundle)
         }
 
         viewModel._userData.observe(viewLifecycleOwner, Observer { response ->

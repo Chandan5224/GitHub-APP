@@ -43,6 +43,7 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
         }
     }
 
+
     fun getFollowers(userName: String) {
         _userFollowers.postValue(Resource.Loading())
         viewModelScope.launch {
@@ -96,15 +97,6 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
             }
         }
         return Resource.Error(response.message())
-    }
-
-    override fun onCleared() {
-        // Clear UI data when ViewModel is cleared (Fragment is destroyed)
-        _userFollowing.postValue(Resource.Loading())
-        _userFollowers.postValue(Resource.Loading())
-        _userData.postValue(Resource.Loading())
-        _searchUsers.postValue(Resource.Loading())
-        super.onCleared()
     }
 
 }

@@ -5,7 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color"
-    tools:context=".fragment.UsersFragment">
+    tools:context=".fragment.FollowersFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loader"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFragTitle"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loader" />
 
     <ImageView
         android:id="@+id/btnBack"
@@ -30,10 +43,11 @@
         app:layout_constraintTop_toBottomOf="@+id/btnBack" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvUsers"
+        android:id="@+id/rvUsersFollowers"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

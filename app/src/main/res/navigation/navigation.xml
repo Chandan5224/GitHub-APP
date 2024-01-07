@@ -20,16 +20,31 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_usersFragment"
-            app:destination="@id/usersFragment" />
+            android:id="@+id/action_profileFragment_to_followersFragment"
+            app:destination="@id/followersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_followingFragment"
+            app:destination="@id/followingFragment" />
+        <argument
+            android:name="userData"
+            app:argType="com.example.githubapp.model.UserData" />
     </fragment>
     <fragment
-        android:id="@+id/usersFragment"
-        android:name="com.example.githubapp.fragment.UsersFragment"
-        android:label="fragment_users"
-        tools:layout="@layout/fragment_users" >
+        android:id="@+id/followersFragment"
+        android:name="com.example.githubapp.fragment.FollowersFragment"
+        android:label="fragment_followers"
+        tools:layout="@layout/fragment_followers" >
         <action
-            android:id="@+id/action_usersFragment_to_profileFragment"
+            android:id="@+id/action_followersFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/followingFragment"
+        android:name="com.example.githubapp.fragment.FollowingFragment"
+        android:label="fragment_following"
+        tools:layout="@layout/fragment_following" >
+        <action
+            android:id="@+id/action_followingFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

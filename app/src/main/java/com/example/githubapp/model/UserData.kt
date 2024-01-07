@@ -19,4 +19,4 @@ data class UserData(
     val type: String = "",
     val updated_at: String = "",
     val url: String = ""
-)
+) : java.io.Serializable
